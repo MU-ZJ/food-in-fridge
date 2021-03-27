@@ -11,4 +11,26 @@ router.get('/', (req, res) => {
     }
 })
 
+router.get('/login', (req, res) => {
+    res.render('login')
+})
+
+router.post('/login', (req, res) => {
+    let email = req.body.email
+    let password = req.body.password
+
+    res.send(`We need to do something with ${email} and ${password}`)
+})
+
+router.get('/register', (req, res) => {
+    res.render('register')
+})
+
+router.post('/register', (req, res) => {
+    let email = req.body.email
+    let password = req.body.password
+
+    res.send(`We need to do something with ${email} and ${password}`)
+})
+
 module.exports = router
