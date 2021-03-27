@@ -1,0 +1,87 @@
+.background-1 {
+  background-color: #fffee5; }
+
+.background-2 {
+  background-color: #e5fad7; }
+
+.background-3 {
+  background-color: #fef1f4; }
+
+/*--- Global Background ---*/
+.background-main-color {
+  background-color: #ff1744; }
+
+.background-second-color {
+  background-color: #00c1fd; }
+
+.background-third-color {
+  background-color: #e6508b; }
+
+/*--- Text Color ---*/
+.text-main-color {
+  color: #ff1744; }
+
+.text-second-color {
+  color: #00c1fd; }
+
+/*--- Border Main Color ---*/
+.border-main-color {
+  border-color: #ff1744 !important; }
+
+.border-second-color {
+  border-color: #00c1fd !important; }
+
+ul.pagination.color li a {
+  background-color: #ff1744; }
+
+ul.pagination.color-1 li a {
+  background-color: #00c1fd; }
+
+a.btn-outline-primary {
+  border-color: #ff1744;
+  color: #ff1744; }
+  a.btn-outline-primary:hover {
+    background-color: #ff1744; }
+
+section .section-title h1 span {
+  color: #ff1744; }
+
+.owl-theme .owl-controls .owl-page span {
+  border: 1px solid #ff1744; }
+
+.widget h4.widget-title {
+  color: #ff1744; }
+
+.widget.widget_nav_menu ul li a:before,
+.widget.widget_recent_entries ul li a:before,
+.widget.widget_recent_comments ul li a:before,
+.widget.widget_archive ul li a:before,
+.widget.widget_categories ul li a:before,
+.widget.widget_meta ul li a:before,
+.widget.widget_rss ul li a:before {
+  color: #ff1744; }
+
+h4.table-title {
+  color: #ff1744; }
+
+.nav-tabs-2 .nav-link {
+  background-color: #ff1744; }
+
+.timeline-item .date:before {
+  color: #ff1744; }
+
+header a.model-link span {
+  background-color: #ff1744; }
+
+header ul.nav-menu > li.active > a {
+  color: #ff1744; }
+header ul.nav-menu > li > a:hover {
+  color: #ff1744; }
+
+.mega-links-4columns ul.sub-menu-columns > li > a {
+  color: #ff1744; }
+
+header a.model-link span {
+  background-color: #ff1744; }
+
+/*# sourceMappingURL=color-2.css.map */

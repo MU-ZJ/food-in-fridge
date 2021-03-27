@@ -7,7 +7,12 @@ require('dotenv').config()
 
 const PORT = process.env.PORT || 8080 
 
-exp.use(session({
+app.use(express.static('css'))
+app.use(express.static('js'))
+app.use(express.static('img'))
+app.use(express.static('webfonts'))
+
+app.use(session({
     secret: process.env.SESSION_KEY,
     resave: false,
     saveUninitialized: true
@@ -29,6 +34,9 @@ app.engine('mustache', mustacheExpress())
 app.set('views', './views')
 app.set('view engine', 'mustache')
 app.use(express.urlencoded())
+
+const indexRouter = require('./routes/index.js')
+app.use('/', indexRouter)
 
 app.listen(PORT,() => {
     console.log('live')

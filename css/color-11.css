@@ -1,0 +1,90 @@
+.font-2 {
+  font-family: "Dancing Script"; }
+
+.background-1 {
+  background-color: #f5e7c3; }
+
+.background-2 {
+  background-color: #e5fad7; }
+
+.background-3 {
+  background-color: #fef1f4; }
+
+/*--- Global Background ---*/
+.background-main-color {
+  background-color: #ffcc00; }
+
+.background-second-color {
+  background-color: #ff3a2d; }
+
+.background-third-color {
+  background-color: #f0b800; }
+
+/*--- Text Color ---*/
+.text-main-color {
+  color: #ffcc00; }
+
+.text-second-color {
+  color: #ff3a2d; }
+
+/*--- Border Main Color ---*/
+.border-main-color {
+  border-color: #ffcc00 !important; }
+
+.border-second-color {
+  border-color: #ff3a2d !important; }
+
+ul.pagination.color li a {
+  background-color: #ffcc00; }
+
+ul.pagination.color-1 li a {
+  background-color: #ff3a2d; }
+
+a.btn-outline-primary {
+  border-color: #ffcc00;
+  color: #ffcc00; }
+  a.btn-outline-primary:hover {
+    background-color: #ffcc00; }
+
+section .section-title h1 span {
+  color: #ffcc00; }
+
+.owl-theme .owl-controls .owl-page span {
+  border: 1px solid #ffcc00; }
+
+.widget h4.widget-title {
+  color: #ffcc00; }
+
+.widget.widget_nav_menu ul li a:before,
+.widget.widget_recent_entries ul li a:before,
+.widget.widget_recent_comments ul li a:before,
+.widget.widget_archive ul li a:before,
+.widget.widget_categories ul li a:before,
+.widget.widget_meta ul li a:before,
+.widget.widget_rss ul li a:before {
+  color: #ffcc00; }
+
+h4.table-title {
+  color: #ffcc00; }
+
+.nav-tabs-2 .nav-link {
+  background-color: #ffcc00; }
+
+.timeline-item .date:before {
+  color: #ffcc00; }
+
+header a.model-link span {
+  background-color: #ffcc00; }
+
+header ul.nav-menu > li.active > a {
+  color: #ffcc00; }
+header ul.nav-menu > li > a:hover {
+  color: #ffcc00; }
+
+.mega-links-4columns ul.sub-menu-columns > li > a {
+  color: #ffcc00; }
+
+header a.model-link span {
+  background-color: #ffcc00; }
+
+/*# sourceMappingURL=color-11.css.map */

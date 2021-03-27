@@ -1,0 +1,87 @@
+.background-1 {
+  background-color: #fffee5; }
+
+.background-2 {
+  background-color: #e5fad7; }
+
+.background-3 {
+  background-color: #fef1f4; }
+
+/*--- Global Background ---*/
+.background-main-color {
+  background-color: #d90022; }
+
+.background-second-color {
+  background-color: #eb5c1c; }
+
+.background-third-color {
+  background-color: #e6508b; }
+
+/*--- Text Color ---*/
+.text-main-color {
+  color: #d90022; }
+
+.text-second-color {
+  color: #eb5c1c; }
+
+/*--- Border Main Color ---*/
+.border-main-color {
+  border-color: #d90022 !important; }
+
+.border-second-color {
+  border-color: #eb5c1c !important; }
+
+ul.pagination.color li a {
+  background-color: #d90022; }
+
+ul.pagination.color-1 li a {
+  background-color: #eb5c1c; }
+
+a.btn-outline-primary {
+  border-color: #d90022;
+  color: #d90022; }
+  a.btn-outline-primary:hover {
+    background-color: #d90022; }
+
+section .section-title h1 span {
+  color: #d90022; }
+
+.owl-theme .owl-controls .owl-page span {
+  border: 1px solid #d90022; }
+
+.widget h4.widget-title {
+  color: #d90022; }
+
+.widget.widget_nav_menu ul li a:before,
+.widget.widget_recent_entries ul li a:before,
+.widget.widget_recent_comments ul li a:before,
+.widget.widget_archive ul li a:before,
+.widget.widget_categories ul li a:before,
+.widget.widget_meta ul li a:before,
+.widget.widget_rss ul li a:before {
+  color: #d90022; }
+
+h4.table-title {
+  color: #d90022; }
+
+.nav-tabs-2 .nav-link {
+  background-color: #d90022; }
+
+.timeline-item .date:before {
+  color: #d90022; }
+
+header a.model-link span {
+  background-color: #d90022; }
+
+header ul.nav-menu > li.active > a {
+  color: #d90022; }
+header ul.nav-menu > li > a:hover {
+  color: #d90022; }
+
+.mega-links-4columns ul.sub-menu-columns > li > a {
+  color: #d90022; }
+
+header a.model-link span {
+  background-color: #d90022; }
+
+/*# sourceMappingURL=color-3.css.map */
