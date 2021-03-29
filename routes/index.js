@@ -67,7 +67,7 @@ router.post("/register", (req, res) => {
                 "INSERT INTO users(user_handle, user_pass) VALUES($1, $2)",
                 [user_handle, hash]
               ).then(() => {
-                res.redirect("/login");
+                res.redirect("/");
               });
             }
           });
