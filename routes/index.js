@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 var bcrypt = require("bcryptjs");
+const fetch = require('node-fetch');
 
 router.get("/", (req, res) => {
   const user = req.session.userid;
@@ -77,4 +78,28 @@ router.post("/register", (req, res) => {
       console.log(error);
     });
 });
+
+router.get('/choice', (req, res) => {
+    res.render('choice')
+})
+
+router.post('/choice', (req, res) => {
+    let group1 = req.body.protein
+    let group2 = req.body.grains
+    let group3 = req.body.veggies
+
+    fetch(`https://api.edamam.com/search?q=${group1},${group2},${group3}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`)
+    .then((response) => {
+        
+        return response.json()
+    })
+    .then((recipe) => {
+        console.log(recipe.hits[0].recipe)
+        res.render('eat', {eat: recipe.hits})
+    })
+
+
+})
+
+
 module.exports = router;

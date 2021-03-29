@@ -1,0 +1,32 @@
+<html>
+<head></head>
+<body>
+
+<form method="POST" action="/choice">
+
+<h2>Protein</h2>
+<label><input type="checkbox" name="protein" value="ground beef" />Ground Beef</label>
+<br><label><input type="checkbox" name="protein" value="steak" />Steak</label>
+<br><label><input type="checkbox" name="protein" value="chicken" />Chicken</label>
+<br>
+<h2>Grains</h2>
+<label><input type="checkbox" name="grains" value="bread" />Bread</label>
+<br><label><input type="checkbox" name="grains" value="pasta" />Pasta</label>
+<br><label><input type="checkbox" name="grains" value="crackers" />Crackers</label>
+
+<h2>Veggies</h2>
+<label><input type="checkbox" name="veggies" value="lettuce" />Lettuce</label>
+<br><label><input type="checkbox" name="veggies" value="spinach" />Spinach</label>
+<br><label><input type="checkbox" name="veggies" value="bell pepper" />Bell Pepper</label>
+
+<br><br>
+<button>FEED ME</button>
+</form>
+
+<!-- <script>
+$('input[type="checkbox"]').on('change', function() {
+    $('input[name="' + this.name + '"]').not(this).prop('checked', false);
+});
+</script> -->
+</body>
+</html>
