@@ -1,0 +1,519 @@
+@mixin transform($percent) {
+    transform: translateY($percent);
+    -webkit-transform: translateY($percent);
+    -moz-transform: translateY($percent);
+    -o-transform: translateY($percent);
+    -ms-transform: translateY($percent);
+}
+
+@mixin transition($time) {
+    -webkit-transition: all $time ease;
+    -moz-transition: all $time ease;
+    transition: all $time ease;
+}
+
+header {
+    position: relative;
+    z-index: 9;
+    a.mobile-toggle {
+        display: none
+    }
+    header-output .inherit-menu {
+        position: static;
+    }
+    .header-in {
+        position: relative;
+    }
+    ul.nav-menu {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        &:after {
+            content: " ";
+            clear: both;
+            width: 100%;
+        }
+        & > li {
+            display: inline-block;
+            & > a {
+                color: $ColorBlack;
+                z-index: 3;
+                opacity: .7;
+                font-family: $mainFont;
+                text-transform: capitalize;
+                font-size: 13px;
+                font-weight: 500;
+                text-decoration: none;
+                display: block;
+                padding: 35px 0px 35px 0px;
+                margin-right: 20px;
+            }
+            & :nth-last-child(1) a {
+                margin-right: 0px;
+            }
+            & > ul.sub-menu {
+                left: 0;
+                & > li > ul.sub-menu {
+                    left: 200px;
+                    top: 0;
+                    & li {
+                        display: block;
+                        z-index: 3;
+                        position: relative;
+                    }
+                }
+            }
+            & ul.sub-menu {
+                @include transform(10%);
+                @include transition(0.2s);
+                background-color: $ColorWhite;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                position: absolute;
+                top: 90px;
+                width: 200px;
+                visibility: hidden;
+                /*  mix */
+                opacity: 0;
+                & li {
+                    display: block;
+                    z-index: 3;
+                    a {
+                        font-size: 12px;
+                        color: $ColorBlack;
+                        opacity: .7;
+                        display: block;
+                        padding: 10px 20px 10px 20px;
+                        text-transform: capitalize; //    border: 1px solid #e5e5e5;
+                        margin-top: -1px;
+                    }
+                    a:hover {
+                        color: $ColorBlack;
+                        opacity: 1;
+                        padding-left: 25px
+                    }
+                }
+            }
+        }
+        & > li:nth-last-child(1) > a {
+            margin-right: 0px;
+        }
+        & > li:hover {
+            & > ul.sub-menu {
+              //  border-radius: 10px;
+             //   padding-bottom: 15px;
+                @include transform(0);
+                opacity: 1;
+                visibility: visible;
+                & > li:hover {
+                    & > ul.sub-menu {
+                        @include transform(0);
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+            }
+        }
+        /*
+        & > li:nth-last-child(1) > ul.sub-menu,
+        & > li:nth-last-child(2) > ul.sub-menu {
+            left: auto;
+            right: 0
+        }
+        */
+        & > li.active > a {
+            color: $mainColor;
+        }
+        & > li > a:hover {
+            color: $mainColor;
+        }
+        & > li.has-dropdown {
+            position: relative;
+            & > a::after {
+                font-family: "Font Awesome 5 Solid";
+                content: "\f107";
+                display: none;
+            }
+            .svg-inline--fa {
+                margin-left: 0.5em;
+                opacity: .4;
+            }
+
+            & > ul > li.has-dropdown {
+                position: relative;
+                & > a::after {
+                    font-family: "Font Awesome 5 Solid";
+                    content: "\f107";
+                    display: none;
+                    font-size: 0;
+                }
+                .svg-inline--fa {
+                    margin-left: 0.5em;
+                    opacity: .4;
+                    position: absolute;
+                    right: 20px;
+                    margin-left: 0px;
+                }
+            }
+        }
+        & > li.mega-menu {
+            > a {
+                position: relative;
+                &:after {
+                    content: "\f107";
+                    font-family: FontAwesome; //  color: #999;
+                    margin-left: 3px;
+                }
+            }
+        }
+        li.mega-menu:hover .mega-menu-out {
+            @include transform(0);
+            opacity: 1;
+            visibility: visible;
+            display: block;
+        }
+
+        .mega-menu-out {
+            background-color: $ColorWhite;
+            @include transform(10%);
+            @include transition(0.2s);
+            position: absolute;
+            left: 0;
+            top: 89px;
+            width: 100%;
+            padding: 20px;
+            visibility: hidden;
+            opacity: 0;
+            border: 1px solid $colorGrey;
+
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-bottom: 15px;
+            &:after {
+                content: " ";
+                display: block;
+                clear: both;
+                width: 100%
+            }
+            .mega-menu-list {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                li {
+                    a {
+                        color: $ColorBlack;
+                        opacity: .7;
+                        text-transform: capitalize;
+                        padding: 8px 0px 8px 0px;
+                        text-decoration: none;
+                        display: block;
+                        border-bottom: 1px solid #eee
+                    }
+                    a:hover {
+                        color: $thirdColor;
+                        padding-left: 5px;
+                    }
+
+                }
+            }
+
+        }
+    }
+    ul.dropdown-dark {
+        .mega-menu-out {
+            background-color: $secondColor;
+            border: 1px solid rgba(255,255,255,.3);
+            .mega-menu-list {
+                li {
+                    a {
+                        color: $ColorWhite;
+                        opacity: .7;
+                        // border-bottom: 1px solid rgba(255, 255, 255, .3);
+                    }
+                    a:hover {
+                        color: $ColorWhite;
+                        opacity: 1;
+                    }
+                    a:hover:before {
+                        color: #f3be4e;
+                    }
+                }
+            }
+        }
+        .mega-links-4columns {
+            ul.sub-menu-columns {
+                & > li {
+                    > a {
+                        color: $ColorWhite;
+                        border-bottom: 1px solid $colorGrey3;
+                    }
+                }
+            }
+
+        }
+        li {
+
+            & > ul.sub-menu {
+            background-color: $secondColor;
+                & > li {
+                    display: block;
+                    > a {
+                        color: $ColorWhite;
+                        //    border: 1px solid rgba(255,255,255,.3);
+                    }
+                    a:hover {
+                        color: $ColorWhite;
+                    }
+                    a:hover:before {
+                        color: $mainColorAlpha;
+                    }
+                }
+            }
+
+        }
+        & > li.has-dropdown {
+            position: relative;
+            li.has-dropdown > a:after {
+                color: $ColorWhite !important;
+            }
+        }
+    }
+    ul.white-link {
+        & > li {
+            > a {
+                color: $ColorWhite;
+                opacity: .8;
+            }
+            > a:hover {
+                color: $ColorWhite !important;
+            }
+        }
+
+    }
+    .mega-links-4columns {
+        ul.sub-menu-columns {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            & > li {
+                width: 25%;
+                float: left;
+                padding: 0px 10px 10px 10px;
+                > a {
+                    padding: 0px 0px 10px 0px;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                    text-decoration: none;
+                    color: $mainColor;
+                    border-bottom: 1px solid #dcdcdc;
+                    display: block;
+                }
+            }
+        }
+
+    }
+
+
+    /* Link Padding Top & bottom */
+    @for $i from 0 through 45 {
+        ul.link-padding-tb-#{$i}px {
+            & > li > a {
+                padding-top: 0px + $i;
+                padding-bottom: 0px + $i;
+            }
+            & > li > ul.sub-menu {
+                top: $i + $i + 23px;
+            }
+            .mega-menu-out {
+                top: $i + $i + 23px;
+            }
+        }
+    }
+
+}
+
+/* ------ header search ------*/
+
+header.header-search {
+    .search-ba {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+30&1+0,0+30 */
+        background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 30%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 30%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 30%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0);
+        /* IE6-9 */
+    }
+    .form-control {
+        background-color: rgba(255, 255, 255, .4);
+    }
+    .dropdown-toggle::after {
+        display: none
+    }
+    .dropdown-menu {
+        a.dropdown-item {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, .3);
+            &:hover {
+                color: #fff;
+                background-color: $thirdColor;
+            }
+            .fa {
+                color: #fff;
+                margin-right: 15px;
+            }
+        }
+    }
+    .form-control-lg,
+    .input-group-lg > .form-control,
+    .input-group-lg > .input-group-addon,
+    .input-group-lg > .input-group-btn > .btn {
+        font-size: 15px;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 15px 25px 15px 25px;
+        font-family: $mainFont
+    }
+}
+
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.fixed-header-dark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $ColorWhite
+}
+
+header a.model-link {
+    display: block;
+    width: 30px;
+    text-align: center;
+    padding: 5px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-size: 15px;
+    border-radius: 3px;
+    position: relative;
+    color: #a7a7a7;
+}
+
+header a.model-link:hover span {
+    display: block;
+}
+
+header a.model-link span {
+    display: none;
+    position: absolute;
+    top: -5px;
+    right: -2px;
+    width: 20px;
+    height: 20px;
+    padding: 1px;
+    border-radius: 20px;
+    background-color: $mainColor;
+    color: #fff;
+}
+
+header .search-link {
+    margin-right: 10px;
+}
+
+header .model-link {
+    position: relative
+}
+
+
+
+
+
+
+header#sidebar-header {
+    ul.float-right {
+        float: none !important;
+    }
+
+    ul.nav-menu {
+        > li {
+            float: none;
+            display: block;
+            > a {
+                padding: 10px 0px 10px 0px;
+                border-bottom: 1px solid rgba(0, 0, 0, .1);
+                margin-right: 0px;
+            }
+
+            ul {
+                display: none;
+            }
+            & > ul.sub-menu {
+                @include transform(0%);
+                @include transition(0.0s);
+                top: auto;
+                width: 100%;
+                position: relative;
+                visibility: inherit;
+                opacity: 1;
+                display: none;
+                & > li > ul.sub-menu {
+                    left: auto;
+                    top: auto;
+                    width: 100%;
+                    position: relative;
+                    visibility: inherit;
+                    opacity: 1;
+                }
+            }
+        }
+        > li.has-dropdown,
+        > li.mega-menu {
+            > a:after {
+                position: absolute;
+                right: 5px;
+                margin-left: 0px;
+            }
+        }
+        .mega-menu-out {
+            @include transform(0%);
+            @include transition(0.0s);
+            top: auto;
+            width: 100%;
+            position: relative;
+            visibility: inherit;
+            opacity: 1;
+            padding: 0px;
+            border: none;
+        }
+
+        .mega-links-4columns ul.sub-menu-columns {
+            padding: 10px 0 10px;
+            > li {
+                width: 100%;
+                position: relative;
+                & > a:after {
+                    position: absolute;
+                    right: 20px;
+                    margin-left: 0px;
+                    transition: all 0.4s;
+                    content: "\f107";
+                    font-family: FontAwesome;
+                }
+
+            }
+        }
+
+    }
+}

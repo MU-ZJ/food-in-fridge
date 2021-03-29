@@ -7,10 +7,7 @@ require('dotenv').config()
 
 const PORT = process.env.PORT || 8080 
 
-app.use(express.static('css'))
-app.use(express.static('js'))
-app.use(express.static('img'))
-app.use(express.static('webfonts'))
+app.use('/assets', express.static('assets'))
 
 app.use(session({
     secret: process.env.SESSION_KEY,

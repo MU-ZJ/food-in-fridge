@@ -909,7 +909,7 @@ video {
       left: 15px;
       content: " ";
       position: absolute;
-      background-image: url(icon-1.png);
+      background-image: url(../img/icon/icon-1.png);
       background-repeat: no-repeat;
       background-position: left center; }
   .listing-search .regions {
@@ -921,7 +921,7 @@ video {
       left: 15px;
       content: " ";
       position: absolute;
-      background-image: url(icon-2.png);
+      background-image: url(../img/icon/icon-2.png);
       background-repeat: no-repeat;
       background-position: left center; }
   .listing-search .categories {
@@ -933,7 +933,7 @@ video {
       left: 15px;
       content: " ";
       position: absolute;
-      background-image: url(icon-3.png);
+      background-image: url(../img/icon/icon-3.png);
       background-repeat: no-repeat;
       background-position: left center; }
   .listing-search .listing-bottom {
@@ -23071,7 +23071,7 @@ ul.pagination-style-2 li a {
       width: 100%; }
 
 #map-distributors > div:nth-child(1) > div > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(4) > div > div:nth-child(3) {
-  background-image: url(close.png) !important;
+  background-image: url(../img/close.png) !important;
   width: 25px !important;
   height: 25px !important;
   top: 12px !important;
@@ -23172,7 +23172,7 @@ ul.pagination-style-2 li a {
 /* Section Style           -----------------------------------------------*
 ------------------------------------------------------------------------- */
 .map-ba {
-  background-image: url(map_ba.png);
+  background-image: url(../images/map_ba.png);
   background-position: left top;
   background-repeat: no-repeat; }
 
@@ -24422,7 +24422,7 @@ form.dark-form {
   width: 38px;
   height: 38px;
   opacity: 0.3;
-  background-image: url(popup_close.png);
+  background-image: url(../assets/img/popup_close.png);
   background-size: 38px 38px;
   -webkit-background-size: 38px 38px;
   -moz-background-size: 38px 38px;
@@ -24445,14 +24445,14 @@ form.dark-form {
   text-align: left; }
   .rating ul li {
     display: inline-block;
-    background-image: url(star_0.png);
+    background-image: url(../img/star_0.png);
     background-repeat: no-repeat;
     background-position: center center;
     height: 14px;
     width: 14px;
     margin-right: 5px; }
   .rating ul li.active {
-    background-image: url(star_1.png); }
+    background-image: url(../img/star_1.png); }
 
 /* ========================================================================== */
 /*   Hover Effect   

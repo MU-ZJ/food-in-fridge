@@ -1,0 +1,142 @@
+$mainColor: #d90022 ;
+$secondColor:#eb5c1c;
+$thirdColor:#e6508b;
+
+$baColor1: #fffee5 ;
+$baColor2: #e5fad7 ;
+$baColor3: #fef1f4 ;
+
+.background-1{
+    background-color: $baColor1;
+}
+.background-2{
+    background-color: $baColor2;
+}
+.background-3{
+    background-color: $baColor3;
+}
+
+/*--- Global Background ---*/
+
+.background-main-color {
+    background-color: $mainColor
+}
+
+.background-second-color {
+    background-color: $secondColor
+}
+.background-third-color {
+    background-color: $thirdColor
+}
+
+/*--- Text Color ---*/
+
+.text-main-color {
+    color: $mainColor
+}
+
+.text-second-color {
+    color: $secondColor
+}
+
+
+/*--- Border Main Color ---*/
+
+.border-main-color {
+    border-color: $mainColor !important
+}
+
+.border-second-color {
+    border-color: $secondColor !important
+}
+
+ul.pagination.color li a {
+    background-color: $mainColor;
+}
+
+ul.pagination.color-1 li a {
+    background-color: $secondColor;
+}
+
+a.btn-outline-primary {
+    border-color: $mainColor;
+    color: $mainColor;
+    &:hover {
+        background-color: $mainColor;
+    }
+}
+
+section .section-title h1 span {
+    color: $mainColor;
+}
+
+.owl-theme .owl-controls .owl-page span {
+    border: 1px solid $mainColor
+}
+
+.widget {
+    h4.widget-title {
+        color: $mainColor;
+    }
+}
+
+.widget.widget_nav_menu,
+.widget.widget_recent_entries,
+.widget.widget_recent_comments,
+.widget.widget_archive,
+.widget.widget_categories,
+.widget.widget_meta,
+.widget.widget_rss {
+    ul {
+        li {
+            a:before {
+                color: $mainColor;
+            }
+        }
+    }
+}
+
+h4.table-title {
+    color: $mainColor;
+}
+
+.nav-tabs-2 .nav-link {
+    background-color: $mainColor;
+}
+
+.timeline-item {
+    .date {
+        &:before {
+            color: $mainColor;
+        }
+    }
+}
+
+header a.model-link span {
+    background-color: $mainColor;
+}
+header {
+    ul.nav-menu {
+        & > li.active > a {
+            color: $mainColor;
+        }
+        & > li > a:hover {
+            color: $mainColor;
+        }
+
+    }
+}
+
+.mega-links-4columns {
+    ul.sub-menu-columns {
+        & > li {
+            > a {
+                color: $mainColor;
+            }
+        }
+    }
+
+}
+header a.model-link span {
+    background-color: $mainColor;
+}
