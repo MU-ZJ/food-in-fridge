@@ -18,12 +18,12 @@ app.use(session({
 const connectionString = {
     host: 'queenie.db.elephantsql.com',
     port: 5432,
-    database: 'lahyjaxt ',
-    user: 'lahyjaxt ',
+    database: 'lahyjaxt',
+    user: 'lahyjaxt',
     password: process.env.DB_KEY,
 };
 
-const db = pgp(connectionString)
+global.db = pgp(connectionString)
 
 const mustacheExpress = require('mustache-express')
 
