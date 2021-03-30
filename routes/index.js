@@ -121,5 +121,13 @@ router.post('/choice', (req, res) => {
 
 })
 
+//Doesn't work - Need to edit api response to have recipe ID ready
+router.get('/recipe/:id', (req, res) => {
+  let item = req.params.id
+  let items = item.split('_')
+  console.log(items)
+
+})
+
 
 module.exports = router;
