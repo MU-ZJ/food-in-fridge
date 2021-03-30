@@ -80,7 +80,7 @@ router.post("/register", (req, res) => {
 });
 
 router.get('/choice', (req, res) => {
-    res.render('inhouse')
+    res.render('choice')
 })
 
 router.post('/choice', (req, res) => {
