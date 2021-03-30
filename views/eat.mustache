@@ -1,6 +1,15 @@
 {{#eat}}
-
-{{recipe.label}}
-<img src="{{recipe.image}}">
-{{recipe.ingredientLines}}
+<br><br>
+{{recipe.label}}<br>
+<img src="{{recipe.image}}"><br>
+<p>{{recipe.ingredientLines}}
+</p>
+<br><br>
+<ul>
+{{#recipe.ingredients}}
+<li>
+{{text}}
+</li>
+{{/recipe.ingredients}}
+</ul>
 {{/eat}}

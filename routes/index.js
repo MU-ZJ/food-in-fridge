@@ -80,22 +80,42 @@ router.post("/register", (req, res) => {
 });
 
 router.get('/choice', (req, res) => {
-    res.render('choice')
+    res.render('inhouse')
 })
 
 router.post('/choice', (req, res) => {
-    let group1 = req.body.protein
-    let group2 = req.body.grains
-    let group3 = req.body.veggies
+  let stuff = []  
+  
+  if(req.body.beef) {stuff.push(req.body.beef)}
+  if(req.body.chicken) {stuff.push(req.body.chicken)}
+  if(req.body.pork) {stuff.push(req.body.pork)}
+  if(req.body.fish) {stuff.push(req.body.fish)}
+  if(req.body.turkey) {stuff.push(req.body.turkey)}
+  if(req.body.lamb) {stuff.push(req.body.lamb)}
+  if(req.body.tomato) {stuff.push(req.body.tomato)}
+  if(req.body.carrot) {stuff.push(req.body.carrot)}
+  if(req.body.beans) {stuff.push(req.body.beans)}
+  if(req.body.broccoli) {stuff.push(req.body.broccoli)}
+  if(req.body.peppers) {stuff.push(req.body.peppers)}
+  if(req.body.lettuce) {stuff.push(req.body.lettuce)}
+  if(req.body.rice) {stuff.push(req.body.rice)}
+  if(req.body.pasta) {stuff.push(req.body.pasta)}
+  if(req.body.eggs) {stuff.push(req.body.eggs)}
+  if(req.body.cheese) {stuff.push(req.body.cheese)}
+  if(req.body.milk) {stuff.push(req.body.milk)}
+  if(req.body.butter) {stuff.push(req.body.butter)}
+  if(req.body.bread) {stuff.push(req.body.bread)}
 
-    fetch(`https://api.edamam.com/search?q=${group1},${group2},${group3}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`)
+
+
+    fetch(`https://api.edamam.com/search?q=${stuff}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`)
     .then((response) => {
         
         return response.json()
     })
     .then((recipe) => {
-        console.log(recipe.hits[0].recipe)
-        res.render('eat', {eat: recipe.hits})
+
+        res.render('recipelist', {eat: recipe.hits})
     })
 
 
