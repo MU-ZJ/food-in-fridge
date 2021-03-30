@@ -84,7 +84,7 @@ router.get('/shopping-list', (req,res)=>{
 })
 
 router.get('/choice', (req, res) => {
-    res.render('choice')
+    res.render('inhouse')
 })
 
 router.post('/choice', (req, res) => {
