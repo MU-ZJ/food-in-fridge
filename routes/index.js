@@ -79,6 +79,10 @@ router.post("/register", (req, res) => {
     });
 });
 
+router.get('/shopping-list', (req,res)=>{
+  res.render('shopping-list')
+})
+
 router.get('/choice', (req, res) => {
     res.render('inhouse')
 })
