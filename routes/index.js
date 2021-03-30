@@ -122,10 +122,37 @@ router.post('/choice', (req, res) => {
 })
 
 //Doesn't work - Need to edit api response to have recipe ID ready
+router.post('/recipe/', (req, res) => {
+  let item = req.body.recipe
+ 
+  let itemone = item.split('_')
+ let recpie = itemone[1]
+  
+  
+  fetch(`https://api.edamam.com/search?q=${recpie}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`)
+  .then((response) => {
+      
+      return response.json()
+  })
+  .then((recipe) => {
+
+      res.render('recipe', {eat: recipe.hits})
+  })
+
+})
+
+
 router.get('/recipe/:id', (req, res) => {
   let item = req.params.id
-  let items = item.split('_')
-  console.log(items)
+  fetch(`https://api.edamam.com/search?q=${item}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`)
+  .then((response) => {
+      
+      return response.json()
+  })
+  .then((recipe) => {
+
+      res.render('recipelist', {eat: recipe.hits})
+  })
 
 })
 
