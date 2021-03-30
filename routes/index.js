@@ -83,6 +83,29 @@ router.get('/shopping-list', (req,res)=>{
   res.render('shopping-list')
 })
 
+router.post('/shopping-list', (req,res)=>{
+  let item = req.body.recipe
+
+  let split = item.split('_')
+  let id = split[1]
+  
+  
+  fetch(`https://api.edamam.com/search?q=${id}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`)
+  .then((response) => {
+      
+      return response.json()
+  })
+  .then((recipe) => {
+
+      res.render('recipe', {eat: recipe.hits})
+  })
+
+
+
+
+})
+
+
 router.get('/choice', (req, res) => {
     res.render('inhouse')
 })
