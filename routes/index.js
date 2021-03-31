@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 var bcrypt = require("bcryptjs");
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
 
 router.get("/", (req, res) => {
   const user = req.session.userid;
@@ -35,10 +35,10 @@ router.post("/login", (req, res) => {
             req.session.userId = user.id;
             req.session.username = user.name;
             res.redirect("/");
-/*           ---------------------------------------------
+            /*           ---------------------------------------------
             |Temporarily set to index redirect for testing|
 	     ---------------------------------------------
-*/         
+*/
           }
         } else {
           res.render("login", { message: "Invalid Password!" });
@@ -53,9 +53,10 @@ router.post("/register", (req, res) => {
   let user_handle = req.body.user_handle;
   let user_pass = req.body.user_pass;
   console.log(user_handle);
-  db.oneOrNone("SELECT user_handle, user_pass FROM users WHERE user_handle = $1", [
-    user_handle,
-  ])
+  db.oneOrNone(
+    "SELECT user_handle, user_pass FROM users WHERE user_handle = $1",
+    [user_handle]
+  )
     .then((user) => {
       if (user) {
         res.render("register", { message: "User Already Exists" });
@@ -79,109 +80,206 @@ router.post("/register", (req, res) => {
     });
 });
 
-router.get('/shopping-list', (req,res)=>{
-  res.render('shopping-list')
-})
+router.get("/shopping-list", (req, res) => {
+  res.render("shopping-list");
+});
 
-router.post('/shopping-list', (req,res)=>{
-  let item = req.body.recipe
+router.post("/shopping-list", (req, res) => {
+  let allIngred = req.body.allIngred;
+  let selectIngred = req.body.foodIngred;
+  let thisRecipe = req.body.recipe;
+  let userId = "5";
+  let notChecked = []
+  let items = thisRecipe[0].split("?");
+  let recipe_id = "2";
+  let uri = items[0].split("_");
+  let key = uri[1];
 
-  let split = item.split('_')
-  let id = split[1]
-  
-  
-  fetch(`https://api.edamam.com/search?q=${id}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`)
-  .then((response) => {
+
+  for (let index = 0; index < allIngred.length; index++){
+    let ingredients = allIngred[index].split("?");
+    let ingreds = ingredients[0].split(',')
+    // console.log(ingreds);
+    
+    ingreds.map((ingred)=>{
+      ingred.ingred_active = false
+      console.log(ingred)
       
-      return response.json()
+    })
+
+  }
+  for (let index = 0; index < allIngred.length; index++) {
+    let ingredients = allIngred[index].split("?");
+    let ingreds = ingredients[0].split(',')
+    console.log(ingreds);
+
+
+    db.none(
+      "INSERT INTO ingred_list(ingred_name, ingred_img, ingred_key, ingred_active, user_id, recipe_id) VALUES($1, $2, $3, $4, $5, $6)",
+      [ingreds[0], ingreds[2], ingreds[1], false, userId, recipe_id]
+    )
+    }
+
+
+
+  db.none(
+    "INSERT INTO recipe_list(recipe_key, recipe_title, recipe_img, user_id) VALUES($1, $2, $3, $4)",
+    [key, items[2], items[1], 1]
+  ).then((res) => {
+    db.one("SELECT recipe_id from recipe_list WHERE recipe_key = $1 ", [
+      key,
+    ]).then((result) => {
+      recipe_id = result.recipe_id;
+
+
+      for (let index = 0; index < selectIngred.length; index++) {
+        let ingreds = selectIngred[index].split("?");
+        console.log(ingreds[0]);
+        console.log(ingreds);
+
+
+        console.log(recipe_id);
+
+        db.none(
+          "INSERT INTO ingred_list(ingred_name, ingred_img, ingred_key, ingred_active, user_id, recipe_id) VALUES($1, $2, $3, $4, $5, $6)",
+          [ingreds[0], ingreds[2], ingreds[1], true, userId, recipe_id]
+        )
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    });
+  });
+});
+
+for(let index = 0; index < selectIngred.length; index++) {
+
+  let ingreds = selectIngred[index].split("?")
+  console.log(ingreds[0])
+  console.log(ingreds)
+
+  console.log(recipe_id)
+
+  db.none(
+    "INSERT INTO ingred_list(ingred_name, ingred_img, ingred_key, ingred_active, user_id, recipe_id) VALUES($1, $2, $3, $4, $5, $6)",[ingreds[0], ingreds[2], ingreds[1], true, userId, recipe_id]
+  ).then((res) => {
+    console.log(res)
+  }).catch((error)=>{
+    console.log(error)
   })
-  .then((recipe) => {
-
-      res.render('recipe', {eat: recipe.hits})
-  })
-
-
-
+}
 
 })
 
 
-router.get('/choice', (req, res) => {
-    res.render('inhouse')
-})
+router.get("/choice", (req, res) => {
+  res.render("inhouse");
+});
 
-router.post('/choice', (req, res) => {
-  let stuff = []  
-  
-  if(req.body.beef) {stuff.push(req.body.beef)}
-  if(req.body.chicken) {stuff.push(req.body.chicken)}
-  if(req.body.pork) {stuff.push(req.body.pork)}
-  if(req.body.fish) {stuff.push(req.body.fish)}
-  if(req.body.turkey) {stuff.push(req.body.turkey)}
-  if(req.body.lamb) {stuff.push(req.body.lamb)}
-  if(req.body.tomato) {stuff.push(req.body.tomato)}
-  if(req.body.carrot) {stuff.push(req.body.carrot)}
-  if(req.body.beans) {stuff.push(req.body.beans)}
-  if(req.body.broccoli) {stuff.push(req.body.broccoli)}
-  if(req.body.peppers) {stuff.push(req.body.peppers)}
-  if(req.body.lettuce) {stuff.push(req.body.lettuce)}
-  if(req.body.rice) {stuff.push(req.body.rice)}
-  if(req.body.pasta) {stuff.push(req.body.pasta)}
-  if(req.body.eggs) {stuff.push(req.body.eggs)}
-  if(req.body.cheese) {stuff.push(req.body.cheese)}
-  if(req.body.milk) {stuff.push(req.body.milk)}
-  if(req.body.butter) {stuff.push(req.body.butter)}
-  if(req.body.bread) {stuff.push(req.body.bread)}
+router.post("/choice", (req, res) => {
+  let stuff = [];
 
+  if (req.body.beef) {
+    stuff.push(req.body.beef);
+  }
+  if (req.body.chicken) {
+    stuff.push(req.body.chicken);
+  }
+  if (req.body.pork) {
+    stuff.push(req.body.pork);
+  }
+  if (req.body.fish) {
+    stuff.push(req.body.fish);
+  }
+  if (req.body.turkey) {
+    stuff.push(req.body.turkey);
+  }
+  if (req.body.lamb) {
+    stuff.push(req.body.lamb);
+  }
+  if (req.body.tomato) {
+    stuff.push(req.body.tomato);
+  }
+  if (req.body.carrot) {
+    stuff.push(req.body.carrot);
+  }
+  if (req.body.beans) {
+    stuff.push(req.body.beans);
+  }
+  if (req.body.broccoli) {
+    stuff.push(req.body.broccoli);
+  }
+  if (req.body.peppers) {
+    stuff.push(req.body.peppers);
+  }
+  if (req.body.lettuce) {
+    stuff.push(req.body.lettuce);
+  }
+  if (req.body.rice) {
+    stuff.push(req.body.rice);
+  }
+  if (req.body.pasta) {
+    stuff.push(req.body.pasta);
+  }
+  if (req.body.eggs) {
+    stuff.push(req.body.eggs);
+  }
+  if (req.body.cheese) {
+    stuff.push(req.body.cheese);
+  }
+  if (req.body.milk) {
+    stuff.push(req.body.milk);
+  }
+  if (req.body.butter) {
+    stuff.push(req.body.butter);
+  }
+  if (req.body.bread) {
+    stuff.push(req.body.bread);
+  }
 
-
-    fetch(`https://api.edamam.com/search?q=${stuff}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`)
+  fetch(
+    `https://api.edamam.com/search?q=${stuff}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`
+  )
     .then((response) => {
-        
-        return response.json()
+      return response.json();
     })
     .then((recipe) => {
-
-        res.render('recipelist', {eat: recipe.hits})
-    })
-
-
-})
+      res.render("recipelist", { eat: recipe.hits });
+    });
+});
 
 //Doesn't work - Need to edit api response to have recipe ID ready
-router.post('/recipe/', (req, res) => {
-  let item = req.body.recipe
- 
-  let itemone = item.split('_')
- let recpie = itemone[1]
-  
-  
-  fetch(`https://api.edamam.com/search?q=${recpie}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`)
-  .then((response) => {
-      
-      return response.json()
-  })
-  .then((recipe) => {
+router.post("/recipe/", (req, res) => {
+  let item = req.body.recipe;
 
-      res.render('recipe', {eat: recipe.hits})
-  })
+  let itemone = item.split("_");
+  let recpie = itemone[1];
 
-})
+  fetch(
+    `https://api.edamam.com/search?q=${recpie}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((recipe) => {
+      res.render("recipe", { eat: recipe.hits });
+    });
+});
 
-
-router.get('/recipe/:id', (req, res) => {
-  let item = req.params.id
-  fetch(`https://api.edamam.com/search?q=${item}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`)
-  .then((response) => {
-      
-      return response.json()
-  })
-  .then((recipe) => {
-
-      res.render('recipelist', {eat: recipe.hits})
-  })
-
-})
-
+router.get("/recipe/:id", (req, res) => {
+  let item = req.params.id;
+  fetch(
+    `https://api.edamam.com/search?q=${item}&app_id=a49443ff&app_key=e31785b777706422206d071c54db598e`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((recipe) => {
+      res.render("recipelist", { eat: recipe.hits });
+    });
+});
 
 module.exports = router;

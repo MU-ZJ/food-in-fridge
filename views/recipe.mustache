@@ -110,9 +110,11 @@
 						<ul>
 						<form method='POST' action ='/shopping-list'>
 						{{#recipe.ingredients}}
-							<input type='hidden' value='{{recipe.uri}}' name= 'recipe'>
+							<input type='hidden' value='{{recipe.uri}}?{{recipe.image}}?{{recipe.label}}' name= 'recipe'>
 							<li>{{text}}</li>
-							<input type="checkbox" value='{{foodId}}' name='foodId'>
+							<input type="checkbox" value='{{text}}?{{foodId}}?{{image}}' name='foodIngred'>
+							<input type ="hidden" value='{{text}},{{foodId}},{{image}}' name='allIngred'>
+							
 						
 						{{/recipe.ingredients}}
 						<br></br>
