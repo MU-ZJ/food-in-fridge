@@ -115,6 +115,7 @@ console.log(user_id)
 db.any('SELECT recipe_id, recipe_key, recipe_title, recipe_img, recipe_url FROM recipe_list WHERE user_id = $1', [user_id])
 .then((response) => {
   let recipe = response[0]
+  console.log(response)
   db.any('SELECT ingred_active, ingred_id, ingred_img, ingred_name FROM ingred_list WHERE recipe_id = $1', [recipe.recipe_id])
   .then(ingredients => {
     
@@ -128,12 +129,12 @@ db.any('SELECT recipe_id, recipe_key, recipe_title, recipe_img, recipe_url FROM 
       } else {
         unchecked.push(ingredients[index])
       }
-      res.render('shopping-list', {check: checked, uncheck: unchecked, recipe: recipe })
+      
     }
 
 
     // console.log(response)
-
+    res.render('shopping-list', {check: checked, uncheck: unchecked, recipe: recipe })
 // console.log(checked)
 // console.log(unchecked)
     
@@ -145,7 +146,8 @@ db.any('SELECT recipe_id, recipe_key, recipe_title, recipe_img, recipe_url FROM 
 
 
 }).catch((error) => {
-  res.redirect('/shopping-list')
+  console.log(error)
+  res.redirect('/choice')
 })
 })
 
@@ -240,7 +242,7 @@ db.none(
   ]).then((result) => {
     recipe_id = result.recipe_id;
 
-
+console.log(finalOrder)
     for (let index = 0; index < finalOrder.length; index++) {
       let ingreds = finalOrder[index]
       // console.log(ingreds[0]);
