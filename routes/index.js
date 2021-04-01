@@ -172,7 +172,7 @@ for(let index = 0; index < selectIngred.length; index++) {
   })
 }
 
-})
+
 
 
 router.get("/choice", (req, res) => {
