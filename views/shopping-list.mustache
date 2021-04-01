@@ -2,14 +2,16 @@
 <html lang="en-US">
 
 <head>
-	<title>Cook Note - Food Recipes HTML Template</title>
+	<title>Munchie Gourmet | A Digital Crafts Group Project</title>
 	<meta name="author" content="Nile-Theme">
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<meta name="keywords" content="recipes food, recipes , chinese food, italian food">
-	<meta name="description" content="Cook Note - Food & Recipes Food Template">
+	<meta name="description" content="Munchie Gourmet - Elevate Your Munchies">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- google fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800%7CPoppins:100,200,300i,300,400,700,400i,500%7CDancing+Script:700" rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800%7CPoppins:100,200,300i,300,400,700,400i,500%7CDancing+Script:700"
+		rel="stylesheet">
 	<!-- animate -->
 	<link rel="stylesheet" href="assets/css/animate.css" />
 	<!-- owl Carousel assets -->
@@ -43,27 +45,35 @@
 
 					<div class="row">
 						<div class="col-lg-2 col-md-12">
-							<a id="logo" href="/" class="d-inline-block margin-tb-5px"><img src="assets/img/logo-small.png" alt="" width= 52 height= 52></a>
-							<a class="mobile-toggle padding-13px background-main-color" href="#"><i class="fas fa-bars"></i></a>
+							<a id="logo" href="/" class="d-inline-block margin-tb-5px"><img
+									src="/assets/img/logo-small.png" alt="" width=52 height=52></a>
+							<a class="mobile-toggle padding-13px background-main-color" href="#"><i
+									class="fas fa-bars"></i></a>
 						</div>
 						<div class="col-lg-8 col-md-12 position-inherit">
-							<ul id="menu-main" class="white-link dropdown-dark text-lg-center nav-menu link-padding-tb-17px">
-							<ul class="sub-menu text-left">
-							</ul>
-								</li>
-								<li><a href="/">Home</a></li>
-								<li><a href="/choice/">My Lists</a>	</li>
-								<li><a href="/login">Login</a></li>
-									<li><a href="/register">Register</a></li>
-									</ul>
-								</li>
-						
-							</ul>
+							<ul id="menu-main"
+								class="white-link dropdown-dark text-lg-center nav-menu link-padding-tb-17px">
+								<ul class="sub-menu text-left">
+								</ul>
+							</li>
+							<li><a href="/">Home</a></li>
+							<li><a href="/choice/">Got the Munchies???</a>	</li>
+							<li><a href="/shopping-list">Shopping List</a></li>
+							<li><a href="/login">Login</a></li>
+								
+								</ul>
+							</li>
+					
+						</ul>
 						</div>
 						<div class="col-lg-2 col-md-12 d-none d-lg-block">
 							<hr class="margin-bottom-0px d-block d-sm-none">
-							<a href="/choice/" class="text-white ba-2 box-shadow float-right padding-lr-23px padding-tb-15px text-extra-large"><i class="fas fa-list"></i></a>
-							<a href="/login" class="text-white ba-1 box-shadow float-right padding-lr-23px padding-tb-15px text-extra-large"><i class="far fa-user"></i></a>
+							<a href="/shopping-list"
+								class="text-white ba-2 box-shadow float-right padding-lr-23px padding-tb-15px text-extra-large"><i
+									class="fas fa-list"></i></a>
+							<a href="/login"
+								class="text-white ba-1 box-shadow float-right padding-lr-23px padding-tb-15px text-extra-large"><i
+									class="far fa-user"></i></a>
 						</div>
 					</div>
 
@@ -75,7 +85,7 @@
 
 	<div id="page-title" class="padding-tb-30px gradient-white">
 		<div class="container text-left">
-		<!--	<ol class="breadcrumb opacity-5">
+			<!--	<ol class="breadcrumb opacity-5">
 				<li><a href="/">Home</a></li>
 			</ol> -->
 			<h1 class="font-weight-300">Must Have Munchies:</h1>
@@ -89,35 +99,58 @@
 
 				<div class="row">
 					{{#check}}
-						
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px" >
+
+					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
 						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="{{ingred_img}}" alt=""></a></div>
+							<div class="thum"><img class="border-radius-8 box-shadow" src="{{ingred_img}}"
+										alt=""></div>
 							<a class="h4 d-block margin-top-20px" href="#">{{ingred_name}}</a>
 							<small class="text-grey-2"></small>
-							
-							<a href="/move/{{ingred_id}},{{ingred_active}}" type="button" class="btn btn-primary">Remove From List</a>
-						
+
+							<a href="/move/{{ingred_id}},{{ingred_active}}" type="button" class="btn btn-primary">Remove
+								From List</a>
+
 						</div>
 					</div>
 					{{/check}}
 
 					{{^check}}
 
-					YOU GOT ALL YOUR ITEMS
-							{{recipe.recipe_title}}
 					
+
+
+
+					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
+						<div class="hvr-float">
+							<div class="thum"><img class="border-radius-8 box-shadow" src="{{recipe.recipe_img}}"
+										alt=""></div>
+							<h3 class="h4 d-block margin-top-20px">You've Got Everything to make {{recipe.recipe_title}}</h3>
+							<small class="text-grey-2"></small>
+
+							<a href="{{recipe.recipe_url}}" type="button" class="btn btn-primary">PREP INSTRUCTIONS</a>
+
+						</div>
+					</div>
+
+
+
+
+
+
+
+
+					{
 					{{/check}}
-					
+
 				</div>
 			</div>
 			<div class="col-lg-4">
 				<div class="listing-search box-shadow background-main-color padding-30px margin-bottom-30px">
-				
-				{{recipe.recipe_title}}
-				<img src="{{recipe.recipe_img}}">
-				
-			<!--		<form class="row no-gutters">
+
+					<h4 class="text-center text-white padding-15px">{{recipe.recipe_title}}</h4>
+					<img src="{{recipe.recipe_img}}">
+
+					<!--		<form class="row no-gutters">
 						<div class="col-md-12">
 							<div class="keywords">
 								<input class="listing-form first border-radius-10 margin-bottom-10px" type="text" placeholder="Keywords..." value="">
@@ -150,14 +183,15 @@
 
 				<div class="row margin-tb-45px">
 
-{{#uncheck}}
+					{{#uncheck}}
 
 					<div class="col-6 margin-bottom-25px">
 						{{ingred_name}}
-						<a href="/move/{{ingred_id}},{{ingred_active}}" type="button" class="btn btn-primary">Oops, Still Need</a>
+						<a href="/move/{{ingred_id}},{{ingred_active}}" type="button" class="btn btn-primary">Oops,
+							Still Need</a>
 					</div>
-{{/uncheck}}
-					
+					{{/uncheck}}
+
 				</div>
 
 
@@ -168,27 +202,29 @@
 	</div>
 
 
- <!-- // footer  -->
+	<!-- // footer  -->
 	<div class="padding-tb-10px background-main-color">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="text-white margin-tb-15px text-center text-lg-left">
-						Munchie Gourmet | A Zachary, Fred, Mike, & Wesley Creation 
+						Munchie Gourmet | A Zachary, Fred, Mike, & Wesley Creation
 					</div>
 				</div>
 				<div class="col-md-6">
 					<ul class="list-inline text-lg-right text-center margin-lr-0px margin-tb-15px text-white">
-				
-						<li class="list-inline-item margin-lr-8px"><a class="github" href="https://github.com/Murphy-ZJ/food-in-fridge"><i class="fab fa-github"></i></a></li>
-						
+
+						<li class="list-inline-item margin-lr-8px"><a class="github"
+								href="https://github.com/Murphy-ZJ/food-in-fridge"><i class="fab fa-github"></i></a>
+						</li>
+
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	 <!-- // footer  -->
+
+	<!-- // footer  -->
 
 	<script src="assets/js/jquery-3.2.1.min.js"></script>
 	<script src="assets/js/sticky-sidebar.js"></script>
