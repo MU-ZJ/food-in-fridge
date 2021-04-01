@@ -233,7 +233,7 @@ db.none(
   [key, items[2], items[1], userId, url]
 ).then((res) => {
   db.one("SELECT recipe_id from recipe_list WHERE recipe_key = $1 ", [
-    key,
+    key
   ]).then((result) => {
     recipe_id = result.recipe_id;
 
