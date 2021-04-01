@@ -144,7 +144,7 @@ db.any('SELECT recipe_id, recipe_key, recipe_title, recipe_img, recipe_url FROM 
 
 
 }).catch((error) => {
-  res.redirect('/choice')
+  res.redirect('/shopping-list')
 })
 })
 
