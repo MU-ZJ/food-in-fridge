@@ -80,8 +80,16 @@ router.post("/register", (req, res) => {
 });
 
 router.get('/shopping-list', (req,res)=>{
-  res.render('shopping-list')
+
+  db.any('SELECT ingred_img, ingred_name FROM ingred_list').then(ingredients => {
+    res.render('shopping-list', {ingredients:ingredients })
+
+   
+  
+  })
+ 
 })
+
 
 router.get('/choice', (req, res) => {
     res.render('inhouse')
@@ -159,6 +167,7 @@ router.get('/recipe/:id', (req, res) => {
   })
 
 })
+
 
 
 module.exports = router;
