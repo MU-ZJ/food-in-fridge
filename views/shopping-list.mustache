@@ -75,9 +75,9 @@
 
 	<div id="page-title" class="padding-tb-30px gradient-white">
 		<div class="container text-left">
-			<ol class="breadcrumb opacity-5">
+		<!--	<ol class="breadcrumb opacity-5">
 				<li><a href="/">Home</a></li>
-			</ol>
+			</ol> -->
 			<h1 class="font-weight-300">Must Have Munchies:</h1>
 		</div>
 	</div>
@@ -88,23 +88,36 @@
 			<div class="col-lg-8">
 
 				<div class="row">
-					{{#ingredients}}
+					{{#check}}
 						
 					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px" >
 						<div class="hvr-float">
 							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="{{ingred_img}}" alt=""></a></div>
 							<a class="h4 d-block margin-top-20px" href="#">{{ingred_name}}</a>
 							<small class="text-grey-2"></small>
-							<button type="button" class="btn btn-primary" onclick="">Remove From List</button>
+							
+							<a href="/move/{{ingred_id}},{{ingred_active}}" type="button" class="btn btn-primary">Remove From List</a>
+						
 						</div>
 					</div>
-					{{/ingredients}}
+					{{/check}}
+
+					{{^check}}
+
+					YOU GOT ALL YOUR ITEMS
+							{{recipe.recipe_title}}
+					
+					{{/check}}
 					
 				</div>
 			</div>
 			<div class="col-lg-4">
 				<div class="listing-search box-shadow background-main-color padding-30px margin-bottom-30px">
-					<form class="row no-gutters">
+				
+				{{recipe.recipe_title}}
+				<img src="{{recipe.recipe_img}}">
+				
+			<!--		<form class="row no-gutters">
 						<div class="col-md-12">
 							<div class="keywords">
 								<input class="listing-form first border-radius-10 margin-bottom-10px" type="text" placeholder="Keywords..." value="">
@@ -129,34 +142,22 @@
 							<a class="listing-bottom border-radius-10 background-second-color box-shadow" href="#">Search Now</a>
 						</div>
 					</form>
+-->
+
+
+
 				</div>
 
 				<div class="row margin-tb-45px">
-					<div class="col-6 margin-bottom-25px">
-						<a href="#" class="d-block box-shadow background-main-color text-white hvr-float">
-							<div class="thum"><img src="http://placehold.it/450x250" alt=""></div>
-							<h4 class="text-center padding-15px">Lorem Ipsum</h4>
-						</a>
-					</div>
+
+{{#uncheck}}
 
 					<div class="col-6 margin-bottom-25px">
-						<a href="#" class="d-block box-shadow background-main-color text-white hvr-float">
-							<div class="thum"><img src="http://placehold.it/450x250" alt=""></div>
-							<h4 class="text-center padding-15px">Lorem Ipsum</h4>
-						</a>
+						{{ingred_name}}
+						<a href="/move/{{ingred_id}},{{ingred_active}}" type="button" class="btn btn-primary">Oops, Still Need</a>
 					</div>
-					<div class="col-6 margin-bottom-25px">
-						<a href="#" class="d-block box-shadow background-main-color text-white hvr-float">
-							<div class="thum"><img src="http://placehold.it/450x250" alt=""></div>
-							<h4 class="text-center padding-15px">Lorem Ipsum</h4>
-						</a>
-					</div>
-					<div class="col-6 margin-bottom-25px">
-						<a href="#" class="d-block box-shadow background-main-color text-white hvr-float">
-							<div class="thum"><img src="http://placehold.it/450x250" alt=""></div>
-							<h4 class="text-center padding-15px">Lorem Ipsum</h4>
-						</a>
-					</div>
+{{/uncheck}}
+					
 				</div>
 
 

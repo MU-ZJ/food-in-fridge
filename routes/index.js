@@ -80,9 +80,65 @@ router.post("/register", (req, res) => {
     });
 });
 
+router.get("/move/:item", (req, res) => {
+  let item = req.params.item
+  let items = item.split(',')
+  let ingred_id = items[0]
+  let value = items[1]
+  console.log(value)
+  if (value == 'true') {
+    value = false
+  } else {
+    value = true
+  }
+  console.log(value)
+
+  db.none('UPDATE public.ingred_list SET ingred_active = $1 WHERE ingred_id = $2', [value, ingred_id])
+  .then(() => {
+    res.redirect('/shopping-list')
+  })
+ 
+
+})
+
 router.get("/shopping-list", (req, res) => {
-  res.render("shopping-list");
+let user_id = 7
+//let user_id = req.session.user_id
+
+db.any('SELECT recipe_id, recipe_key, recipe_title, recipe_img FROM recipe_list WHERE user_id = $1', [user_id])
+.then((response) => {
+  let recipe = response[0]
+  db.any('SELECT ingred_active, ingred_id, ingred_img, ingred_name FROM ingred_list WHERE recipe_id = $1', [recipe.recipe_id])
+  .then(ingredients => {
+    
+    let checked = []
+    let unchecked = []
+    
+    for (let index = 0; index < ingredients.length; index++) {
+      if(ingredients[index].ingred_active == true) {
+        // console.log(ingredients[index])
+        checked.push(ingredients[index])
+      } else {
+        unchecked.push(ingredients[index])
+      }
+    }
+
+
+    console.log(response)
+
+// console.log(checked)
+// console.log(unchecked)
+    res.render('shopping-list', {check: checked, uncheck: unchecked, recipe: recipe })
+})
+
+
+  // db.any('SELECT ingred_img, ingred_name FROM ingred_list').then(ingredients => {
+  //   res.render('shopping-list', {ingredients:ingredients })
+
+
 });
+})
+
 
 router.post("/shopping-list", (req, res) => {
   let allIngred = req.body.allIngred;
@@ -97,16 +153,16 @@ router.post("/shopping-list", (req, res) => {
   let uri = items[0].split("_");
   let key = uri[1];
 
-  console.log(allIngred)
-  console.log(selectIngred)
+  // console.log(allIngred)
+  // console.log(selectIngred)
 
 
   //This is Needed to Create A List Complete with true or false for all items in list
   if (allIngred.length == 1) {
     let thisOne = allIngred[0].split("?")
     totalOrder.push(thisOne)
-    console.log('used one')
-    console.log(thisOne)
+    // console.log('used one')
+    // console.log(thisOne)
   } else {
     for (index = 0; index < allIngred.length; index++) {
       let thisOne = allIngred[index].split("?")
@@ -117,9 +173,9 @@ router.post("/shopping-list", (req, res) => {
   console.log(totalOrder)
 
   if (typeof selectIngred === 'string') {
-    console.log(typeof(selectIngred))
+    // console.log(typeof(selectIngred))
     let makeList = selectIngred
-    console.log(makeList)
+    // console.log(makeList)
     let thisOne = makeList.split("?")
     checkedIngred.push(thisOne)
   } else {
@@ -135,21 +191,21 @@ router.post("/shopping-list", (req, res) => {
   for (index = 0; index < totalOrder.length; index++) {
     let match = 0
     for (y = 0; y < checkedIngred.length; y++) {
-      console.log(totalOrder[index][1])
-      console.log(checkedIngred[y][1])
-      console.log(match)
+      // console.log(totalOrder[index][1])
+      // console.log(checkedIngred[y][1])
+      // console.log(match)
       if (totalOrder[index][1] == checkedIngred[y][1]) {
         match = 1
-        console.log(match)
+        // console.log(match)
       }
 
     }
     if (match == 0) {
       let notChecked = totalOrder[index]
-      console.log(notChecked)
+      // console.log(notChecked)
       notChecked.push(false)
       finalOrder.push(notChecked)
-      console.log(notChecked)
+      // console.log(notChecked)
     
     }
 
@@ -177,14 +233,14 @@ db.none(
       // console.log(ingreds);
 
 
-      console.log(recipe_id);
+      // console.log(recipe_id);
 
       db.none(
         "INSERT INTO ingred_list(ingred_name, ingred_img, ingred_key, ingred_active, user_id, recipe_id) VALUES($1, $2, $3, $4, $5, $6)",
         [ingreds[0], ingreds[2], ingreds[1], ingreds[3], userId, recipe_id]
       )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
         })
         .catch((error) => {
           console.log(error);
@@ -196,8 +252,8 @@ db.none(
 
 
 
-  console.log(finalOrder)
-  res.send(finalOrder)
+  // console.log(finalOrder)
+  res.redirect('/shopping-list')
 
 })
 
