@@ -1,10 +1,13 @@
 const express = require("express")
 const app = express()
 const fetch = require('node-fetch');
-var session = require('express-session')
+const session = require('express-session')
 var bcrypt = require('bcryptjs');
 const pgp = require("pg-promise")()
 require('dotenv').config()
+
+
+
 
 const PORT = process.env.PORT || 8080 
 

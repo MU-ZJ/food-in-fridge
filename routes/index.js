@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 var bcrypt = require("bcryptjs");
 const fetch = require("node-fetch");
+const authenticate = require('/Users/mike/Desktop/foodApp/auth/auth.js')
 
 router.get("/", (req, res) => {
-  const user = req.session.userid;
+  const user = req.session.name;
 
   if (!user) {
     res.render("index", { login: "Login" });
@@ -21,19 +22,22 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
-router.post("/login", (req, res) => {
+router.post("/login",  (req, res) => {
   const user_handle = req.body.user_handle;
   const user_pass = req.body.user_pass;
 
-  db.one("SELECT user_handle, user_pass FROM users WHERE user_handle = $1", [
+  db.one("SELECT user_handle, user_pass, user_id FROM users WHERE user_handle = $1", [
     user_handle,
   ])
     .then((user) => {
       bcrypt.compare(user_pass, user.user_pass, (error, result) => {
         if (result) {
           if (req.session) {
-            req.session.userId = user.id;
-            req.session.username = user.name;
+            
+            req.session.userId = user.user_id;
+            req.session.username = user.user_hanlde;
+            let userId = req.session.userId;
+            console.log(userId)
             res.redirect("/");
             /*           ---------------------------------------------
             |Temporarily set to index redirect for testing|
@@ -80,7 +84,9 @@ router.post("/register", (req, res) => {
     });
 });
 
-router.get("/move/:item", (req, res) => {
+router.get("/move/:item", authenticate, (req, res) => {
+  
+
   let item = req.params.item
   let items = item.split(',')
   let ingred_id = items[0]
@@ -101,9 +107,10 @@ router.get("/move/:item", (req, res) => {
 
 })
 
-router.get("/shopping-list", (req, res) => {
-let user_id = 7
+router.get("/shopping-list", authenticate, (req, res) => {
+let user_id = req.session.userId
 //let user_id = req.session.user_id
+console.log(user_id)
 
 db.any('SELECT recipe_id, recipe_key, recipe_title, recipe_img, recipe_url FROM recipe_list WHERE user_id = $1', [user_id])
 .then((response) => {
@@ -148,13 +155,14 @@ router.post("/shopping-list", (req, res) => {
   let finalOrder = []
 
   let thisRecipe = req.body.recipe;
-  let userId = "5";
+  let userId =  req.session.userId;
   let items = thisRecipe[0].split("?");
   let uri = items[0].split("_");
   let key = uri[1];
+  
+  //console.log(userId)
+  
   let url = items[3]
-  console.log(url)
-  console.log(items)
 
   // console.log(allIngred)
   // console.log(selectIngred)
@@ -222,7 +230,7 @@ for(index = 0; index < checkedIngred.length; index ++) {
 
 db.none(
   "INSERT INTO recipe_list(recipe_key, recipe_title, recipe_img, user_id, recipe_url) VALUES($1, $2, $3, $4, $5)",
-  [key, items[2], items[1], 1, url]
+  [key, items[2], items[1], userId, url]
 ).then((res) => {
   db.one("SELECT recipe_id from recipe_list WHERE recipe_key = $1 ", [
     key,
@@ -282,72 +290,6 @@ db.none(
 
 //     })
 
-//   }
-//   for (let index = 0; index < allIngred.length; index++) {
-//     let ingredients = allIngred[index].split("?");
-//     let ingreds = ingredients[0].split(',')
-//     console.log(ingreds);
-
-
-//     db.none(
-//       "INSERT INTO ingred_list(ingred_name, ingred_img, ingred_key, ingred_active, user_id, recipe_id) VALUES($1, $2, $3, $4, $5, $6)",
-//       [ingreds[0], ingreds[2], ingreds[1], false, userId, recipe_id]
-//     )
-//     }
-
-
-
-//   db.none(
-//     "INSERT INTO recipe_list(recipe_key, recipe_title, recipe_img, user_id) VALUES($1, $2, $3, $4)",
-//     [key, items[2], items[1], 1]
-//   ).then((res) => {
-//     db.one("SELECT recipe_id from recipe_list WHERE recipe_key = $1 ", [
-//       key,
-//     ]).then((result) => {
-//       recipe_id = result.recipe_id;
-
-
-//       for (let index = 0; index < selectIngred.length; index++) {
-//         let ingreds = selectIngred[index].split("?");
-//         console.log(ingreds[0]);
-//         console.log(ingreds);
-
-
-//         console.log(recipe_id);
-
-//         db.none(
-//           "INSERT INTO ingred_list(ingred_name, ingred_img, ingred_key, ingred_active, user_id, recipe_id) VALUES($1, $2, $3, $4, $5, $6)",
-//           [ingreds[0], ingreds[2], ingreds[1], true, userId, recipe_id]
-//         )
-//           .then((res) => {
-//             console.log(res);
-//           })
-//           .catch((error) => {
-//             console.log(error);
-//           });
-//       }
-//     });
-//   });
-// });
-
-// for(let index = 0; index < selectIngred.length; index++) {
-
-//   let ingreds = selectIngred[index].split("?")
-//   console.log(ingreds[0])
-//   console.log(ingreds)
-
-//   console.log(recipe_id)
-
-//   db.none(
-//     "INSERT INTO ingred_list(ingred_name, ingred_img, ingred_key, ingred_active, user_id, recipe_id) VALUES($1, $2, $3, $4, $5, $6)",[ingreds[0], ingreds[2], ingreds[1], true, userId, recipe_id]
-//   ).then((res) => {
-//     console.log(res)
-//   }).catch((error)=>{
-//     console.log(error)
-//   })
-// }
-
-// })
 
 
 router.get("/choice", (req, res) => {
