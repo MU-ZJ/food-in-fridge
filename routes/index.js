@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 var bcrypt = require("bcryptjs");
 const fetch = require("node-fetch");
-const authenticate = require('/Users/mike/Desktop/foodApp/auth/auth.js')
+const authenticate = require('../assets/auth.js')
 
 router.get("/", (req, res) => {
   const user = req.session.name;
