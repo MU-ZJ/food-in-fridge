@@ -143,7 +143,9 @@ db.any('SELECT recipe_id, recipe_key, recipe_title, recipe_img, recipe_url FROM 
   //   res.render('shopping-list', {ingredients:ingredients })
 
 
-});
+}).catch((error) => {
+  res.redirect('/choice')
+})
 })
 
 
