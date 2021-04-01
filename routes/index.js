@@ -162,12 +162,12 @@ router.post("/shopping-list", (req, res) => {
   let uri = items[0].split("_");
   let key = uri[1];
   
-  //console.log(userId)
+  console.log(userId)
   
   let url = items[3]
 
-  // console.log(allIngred)
-  // console.log(selectIngred)
+  console.log(allIngred)
+  console.log(selectIngred)
 
 
   //This is Needed to Create A List Complete with true or false for all items in list
@@ -240,7 +240,7 @@ db.none(
     recipe_id = result.recipe_id;
 
 
-    for (let index = 0; index < selectIngred.length; index++) {
+    for (let index = 0; index < finalOrder.length; index++) {
       let ingreds = finalOrder[index]
       // console.log(ingreds[0]);
       // console.log(ingreds);
@@ -265,7 +265,7 @@ db.none(
 
 
 
-  // console.log(finalOrder)
+  console.log(finalOrder)
   res.redirect('/shopping-list')
 
 })
