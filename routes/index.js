@@ -39,9 +39,9 @@ router.post("/login",  (req, res) => {
             let userId = req.session.userId;
             console.log(userId)
             res.redirect("/");
-            /*           ---------------------------------------------
+/*           ---------------------------------------------
             |Temporarily set to index redirect for testing|
-       ---------------------------------------------
+             ---------------------------------------------
 */
           }
         } else {
