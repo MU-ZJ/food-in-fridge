@@ -260,7 +260,7 @@ db.none(
         });
     }
   });
-});
+}).catch((error) => {console.log(error)})
 
 
 
