@@ -297,6 +297,7 @@ router.get("/choice", (req, res) => {
 });
 
 router.post("/choice", (req, res) => {
+  
   let stuff = [];
 
   if (req.body.beef) {
@@ -364,12 +365,13 @@ router.post("/choice", (req, res) => {
       return response.json();
     })
     .then((recipe) => {
-      res.render("recipelist", { eat: recipe.hits });
+      res.render("recipelist", { eat: recipe.hits});
     });
 });
 
 //Doesn't work - Need to edit api response to have recipe ID ready
 router.post("/recipe/", (req, res) => {
+  let userId = req.session.userId
   let item = req.body.recipe;
 
   let itemone = item.split("_");
@@ -382,7 +384,7 @@ router.post("/recipe/", (req, res) => {
       return response.json();
     })
     .then((recipe) => {
-      res.render("recipe", { eat: recipe.hits });
+      res.render("recipe", { eat: recipe.hits , user: userId});
     });
 });
 
@@ -395,7 +397,7 @@ router.get("/recipe/:id", (req, res) => {
       return response.json();
     })
     .then((recipe) => {
-      res.render("recipelist", { eat: recipe.hits });
+      res.render("recipelist", { eat: recipe.hits});
     });
 });
 
