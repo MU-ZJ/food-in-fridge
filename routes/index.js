@@ -112,7 +112,7 @@ let user_id = req.session.userId
 //let user_id = req.session.user_id
 console.log(user_id)
 
-db.any('SELECT recipe_id, recipe_key, recipe_title, recipe_img FROM recipe_list WHERE user_id = $1', [user_id])
+db.any('SELECT recipe_id, recipe_key, recipe_title, recipe_img, recipe_url FROM recipe_list WHERE user_id = $1', [user_id])
 .then((response) => {
   let recipe = response[0]
   db.any('SELECT ingred_active, ingred_id, ingred_img, ingred_name FROM ingred_list WHERE recipe_id = $1', [recipe.recipe_id])
@@ -159,7 +159,10 @@ router.post("/shopping-list", (req, res) => {
   let items = thisRecipe[0].split("?");
   let uri = items[0].split("_");
   let key = uri[1];
-  console.log(userId)
+  
+  //console.log(userId)
+  
+  let url = items[3]
 
   // console.log(allIngred)
   // console.log(selectIngred)
@@ -178,7 +181,7 @@ router.post("/shopping-list", (req, res) => {
     }
   }
 
-  console.log(totalOrder)
+  // console.log(totalOrder)
 
   if (typeof selectIngred === 'string') {
     // console.log(typeof(selectIngred))
@@ -193,7 +196,7 @@ router.post("/shopping-list", (req, res) => {
       checkedIngred.push(thisOne)
     }
   }
-  console.log(checkedIngred)
+  // console.log(checkedIngred)
 
 
   for (index = 0; index < totalOrder.length; index++) {
@@ -226,8 +229,8 @@ for(index = 0; index < checkedIngred.length; index ++) {
 }
 
 db.none(
-  "INSERT INTO recipe_list(recipe_key, recipe_title, recipe_img, user_id) VALUES($1, $2, $3, $4)",
-  [key, items[2], items[1], userId]
+  "INSERT INTO recipe_list(recipe_key, recipe_title, recipe_img, user_id, recipe_url) VALUES($1, $2, $3, $4, $5)",
+  [key, items[2], items[1], userId, url]
 ).then((res) => {
   db.one("SELECT recipe_id from recipe_list WHERE recipe_key = $1 ", [
     key,
