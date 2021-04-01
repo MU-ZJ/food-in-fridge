@@ -128,14 +128,15 @@ db.any('SELECT recipe_id, recipe_key, recipe_title, recipe_img, recipe_url FROM 
       } else {
         unchecked.push(ingredients[index])
       }
+      res.render('shopping-list', {check: checked, uncheck: unchecked, recipe: recipe })
     }
 
 
-    console.log(response)
+    // console.log(response)
 
 // console.log(checked)
 // console.log(unchecked)
-    res.render('shopping-list', {check: checked, uncheck: unchecked, recipe: recipe })
+    
 })
 
 
@@ -162,12 +163,12 @@ router.post("/shopping-list", (req, res) => {
   let uri = items[0].split("_");
   let key = uri[1];
   
-  console.log(userId)
+  // console.log(userId)
   
   let url = items[3]
 
-  console.log(allIngred)
-  console.log(selectIngred)
+  // console.log(allIngred)
+  // console.log(selectIngred)
 
 
   //This is Needed to Create A List Complete with true or false for all items in list
