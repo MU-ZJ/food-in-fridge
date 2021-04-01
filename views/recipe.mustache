@@ -103,9 +103,19 @@
 						<hr>
 						<h3>Ingredients</h3>
 						<ul>
+						<form method='POST' action ='/shopping-list'>
 						{{#recipe.ingredients}}
+							<input type='hidden' value='{{recipe.uri}}?{{recipe.image}}?{{recipe.label}}' name= 'recipe'>
 							<li>{{text}}</li>
-							{{/recipe.ingredients}}
+							<input type="checkbox" value='{{text}}?{{foodId}}?{{image}}' name='foodIngred'>
+							<input type ="hidden" value='{{text}}?{{foodId}}?{{image}}' name='allIngred'>
+							
+						
+						{{/recipe.ingredients}}
+						<br></br>
+						<button>Submit</button
+						</form>
+						
 						</ul>
 						
 						<hr>
