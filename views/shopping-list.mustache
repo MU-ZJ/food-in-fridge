@@ -30,10 +30,12 @@
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
 
+
 </head>
 
 <body>
 
+	<!-- // Header  -->
 	<header class="background-main-color">
 		<div class="container">
 			<div class="header-output">
@@ -41,55 +43,27 @@
 
 					<div class="row">
 						<div class="col-lg-2 col-md-12">
-							<a id="logo" href="index.html" class="d-inline-block margin-tb-5px"><img src="assets/img/logo-small.png" alt=""></a>
+							<a id="logo" href="/" class="d-inline-block margin-tb-5px"><img src="assets/img/logo-small.png" alt="" width= 52 height= 52></a>
 							<a class="mobile-toggle padding-13px background-main-color" href="#"><i class="fas fa-bars"></i></a>
 						</div>
 						<div class="col-lg-8 col-md-12 position-inherit">
-
 							<ul id="menu-main" class="white-link dropdown-dark text-lg-center nav-menu link-padding-tb-17px">
-								<li class="has-dropdown"><a href="#">Home</a>
-									<ul class="sub-menu text-left">
-										<li><a href="index.html">Home 1</a></li>
-										<li><a href="index-2.html">Home 2</a></li>
-										<li><a href="index-3.html">Home 3</a></li>
-									</ul>
-								</li>
-								<li class="has-dropdown"><a href="#">Recipes</a>
-									<ul class="sub-menu text-left">
-										<li><a href="recipes-grid-layout.html">Recipes - Grid Layout </a></li>
-										<li><a href="recipes-list-layout.html">Recipes - List Layout</a></li>
-										<li><a href="authors-layout-1.html">Authors - Layout (1)</a></li>
-										<li><a href="authors-layout-2.html">Authors - Layout (2)</a></li>
-										<li><a href="single-recipe.html">Single Recipe</a></li>
-									</ul>
-								</li>
-								<li class="has-dropdown"><a href="#">Blog</a>
-									<ul class="sub-menu text-left">
-										<li><a href="blog-grid.html">Blog Grid </a></li>
-										<li><a href="blog-list.html">Blog List</a></li>
-										<li><a href="blog-classic.html">Blog Classic</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-									</ul>
-								</li>
-								<li class="has-dropdown"><a href="#">Pages</a>
-									<ul class="sub-menu text-left">
-										<li><a href="page-about.html">About Us </a></li>
-										<li><a href="add-recipe.html">Add Recipe</a></li>
-										<li><a href="page-login.html">Login Page</a></li>
-										<li><a href="page-sign-up.html">Sign up</a></li>
-										<li><a href="search-page.html">Search  Page</a></li>
-										<li><a href="page-contact-us.html">Contact Us</a></li>
-										<li><a href="page-404.html">Pages 404</a></li>
-									</ul>
-								</li>
-								<li><a href="page-contact-us.html">Conact Us</a></li>
+							<ul class="sub-menu text-left">
 							</ul>
-
+								</li>
+								<li><a href="/">Home</a></li>
+								<li><a href="/choice/">My Lists</a>	</li>
+								<li><a href="/login">Login</a></li>
+									<li><a href="/register">Register</a></li>
+									</ul>
+								</li>
+						
+							</ul>
 						</div>
-						<div class="col-lg-2 col-md-12">
+						<div class="col-lg-2 col-md-12 d-none d-lg-block">
 							<hr class="margin-bottom-0px d-block d-sm-none">
-							<a href="add-recipe.html" class="text-white ba-2 box-shadow float-right padding-lr-23px padding-tb-15px text-extra-large"><i class="fas fa-plus"></i></a>
-							<a href="page-login.html" class="text-white ba-1 box-shadow float-right padding-lr-23px padding-tb-15px text-extra-large"><i class="far fa-user"></i></a>
+							<a href="/choice/" class="text-white ba-2 box-shadow float-right padding-lr-23px padding-tb-15px text-extra-large"><i class="fas fa-list"></i></a>
+							<a href="/login" class="text-white ba-1 box-shadow float-right padding-lr-23px padding-tb-15px text-extra-large"><i class="far fa-user"></i></a>
 						</div>
 					</div>
 
@@ -101,11 +75,10 @@
 
 	<div id="page-title" class="padding-tb-30px gradient-white">
 		<div class="container text-left">
-			<ol class="breadcrumb opacity-5">
-				<li><a href="#">Home</a></li>
-				<li class="active">Authors</li>
-			</ol>
-			<h1 class="font-weight-300">Authors</h1>
+		<!--	<ol class="breadcrumb opacity-5">
+				<li><a href="/">Home</a></li>
+			</ol> -->
+			<h1 class="font-weight-300">Must Have Munchies:</h1>
 		</div>
 	</div>
 
@@ -115,114 +88,36 @@
 			<div class="col-lg-8">
 
 				<div class="row">
-
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
+					{{#check}}
+						
+					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px" >
 						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">Ali haleem</a>
-							<small class="text-grey-2">(145 Recipes)</small>
+							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="{{ingred_img}}" alt=""></a></div>
+							<a class="h4 d-block margin-top-20px" href="#">{{ingred_name}}</a>
+							<small class="text-grey-2"></small>
+							
+							<a href="/move/{{ingred_id}},{{ingred_active}}" type="button" class="btn btn-primary">Remove From List</a>
+						
 						</div>
 					</div>
+					{{/check}}
 
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">Salim Aldosery</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
+					{{^check}}
 
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">Rabie Khair</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">Momen Alsho</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">M.Salman ali</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">Khalid Ziaad</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
-
-
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">Ali haleem</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">Salim Aldosery</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">Rabie Khair</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">Momen Alsho</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">M.Salman ali</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
-
-					<div class="col-lg-3 col-md-3 text-center margin-bottom-40px">
-						<div class="hvr-float">
-							<div class="thum"><a href="#"><img class="border-radius-8 box-shadow" src="http://placehold.it/270x270" alt=""></a></div>
-							<a class="h4 d-block margin-top-20px" href="#">Khalid Ziaad</a>
-							<small class="text-grey-2">(145 Recipes)</small>
-						</div>
-					</div>
-
+					YOU GOT ALL YOUR ITEMS
+							{{recipe.recipe_title}}
+					
+					{{/check}}
+					
 				</div>
-
-				<div class="text-center">
-					<a href="#" class="btn box-shadow margin-top-20px padding-tb-10px btn-sm border-2 border-radius-30 btn-inline-block width-210px background-dark text-white">Load More ...</a>
-				</div>
-
 			</div>
 			<div class="col-lg-4">
 				<div class="listing-search box-shadow background-main-color padding-30px margin-bottom-30px">
-					<form class="row no-gutters">
+				
+				{{recipe.recipe_title}}
+				<img src="{{recipe.recipe_img}}">
+				
+			<!--		<form class="row no-gutters">
 						<div class="col-md-12">
 							<div class="keywords">
 								<input class="listing-form first border-radius-10 margin-bottom-10px" type="text" placeholder="Keywords..." value="">
@@ -247,49 +142,25 @@
 							<a class="listing-bottom border-radius-10 background-second-color box-shadow" href="#">Search Now</a>
 						</div>
 					</form>
+-->
+
+
+
 				</div>
 
 				<div class="row margin-tb-45px">
+
+{{#uncheck}}
+
 					<div class="col-6 margin-bottom-25px">
-						<a href="#" class="d-block box-shadow background-main-color text-white hvr-float">
-							<div class="thum"><img src="http://placehold.it/450x250" alt=""></div>
-							<h4 class="text-center padding-15px">Fish</h4>
-						</a>
+						{{ingred_name}}
+						<a href="/move/{{ingred_id}},{{ingred_active}}" type="button" class="btn btn-primary">Oops, Still Need</a>
 					</div>
-					<div class="col-6 margin-bottom-25px">
-						<a href="#" class="d-block box-shadow background-main-color text-white hvr-float">
-							<div class="thum"><img src="http://placehold.it/450x250" alt=""></div>
-							<h4 class="text-center padding-15px">Cocktails</h4>
-						</a>
-					</div>
-					<div class="col-6 margin-bottom-25px">
-						<a href="#" class="d-block box-shadow background-main-color text-white hvr-float">
-							<div class="thum"><img src="http://placehold.it/450x250" alt=""></div>
-							<h4 class="text-center padding-15px">Eggs</h4>
-						</a>
-					</div>
-					<div class="col-6 margin-bottom-25px">
-						<a href="#" class="d-block box-shadow background-main-color text-white hvr-float">
-							<div class="thum"><img src="http://placehold.it/450x250" alt=""></div>
-							<h4 class="text-center padding-15px">Salads</h4>
-						</a>
-					</div>
+{{/uncheck}}
+					
 				</div>
 
-				<div class="widget widget_categories">
-					<div class="margin-bottom-30px">
-						<div class="padding-30px background-white border-radius-10">
-							<h4><i class="fab fa-instagram margin-right-10px text-main-color"></i> Instagram</h4>
-							<hr>
-							<div class="row">
-								<div class="col-6 margin-bottom-20px"><a href="#"><img class="border-radius-10" src="http://placehold.it/600x600" alt=""></a></div>
-								<div class="col-6 margin-bottom-20px"><a href="#"><img class="border-radius-10" src="http://placehold.it/600x600" alt=""></a></div>
-								<div class="col-6 margin-bottom-20px"><a href="#"><img class="border-radius-10" src="http://placehold.it/600x600" alt=""></a></div>
-								<div class="col-6 margin-bottom-20px"><a href="#"><img class="border-radius-10" src="http://placehold.it/600x600" alt=""></a></div>
-							</div>
-						</div>
-					</div>
-				</div>
+
 
 			</div>
 
@@ -297,75 +168,27 @@
 	</div>
 
 
-	<footer class="padding-top-100px padding-bottom-70px background-dark">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-4 sm-mb-30px">
-					<div class="logo margin-bottom-10px"><img src="assets/img/logo-1.png" alt=""></div>
-					<div class="text-grey-2  font-weight-300">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy .</div>
-					<ul class="list-inline text-left margin-tb-20px margin-lr-0px text-white">
-						<li class="list-inline-item"><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li class="list-inline-item"><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
-						<li class="list-inline-item"><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
-						<li class="list-inline-item"><a class="google" href="#"><i class="fab fa-google-plus"></i></a></li>
-						<li class="list-inline-item"><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a class="rss" href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-					</ul>
-					<!-- // Social -->
-				</div>
-
-				<div class="col-lg-4  col-md-4 sm-mb-30px">
-					<ul class="footer-menu-2 row margin-0px padding-0px list-unstyled">
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Home</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Featured</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Feedback</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Ask a Question</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Team</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Maintenance</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Get a Quote</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Contact Us</a></li>
-					</ul>
-				</div>
-
-				<div class="col-lg-4  col-md-4 sm-mb-30px">
-					<ul class="footer-menu-2 row margin-0px padding-0px list-unstyled">
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Home</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Featured</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Feedback</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Ask a Question</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Team</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Maintenance</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Get a Quote</a></li>
-						<li class="col-6  padding-tb-5px"><a href="#" class="text-grey-2">Contact Us</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</div>
-	</footer>
-
-
+ <!-- // footer  -->
 	<div class="padding-tb-10px background-main-color">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
 					<div class="text-white margin-tb-15px text-center text-lg-left">
-						Cook Note | @2017 All copy rights reserved
+						Munchie Gourmet | A Zachary, Fred, Mike, & Wesley Creation 
 					</div>
 				</div>
 				<div class="col-md-6">
 					<ul class="list-inline text-lg-right text-center margin-lr-0px margin-tb-15px text-white">
-						<li class="list-inline-item margin-lr-8px"><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li class="list-inline-item margin-lr-8px"><a class="facebook" href="#"><i class="fab fa-youtube"></i></a></li>
-						<li class="list-inline-item margin-lr-8px"><a class="facebook" href="#"><i class="fab fa-linkedin"></i></a></li>
-						<li class="list-inline-item margin-lr-8px"><a class="facebook" href="#"><i class="fab fa-google-plus"></i></a></li>
-						<li class="list-inline-item margin-lr-8px"><a class="facebook" href="#"><i class="fab fa-twitter"></i></a></li>
-						<li class="list-inline-item margin-lr-8px"><a class="rss" href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+				
+						<li class="list-inline-item margin-lr-8px"><a class="github" href="https://github.com/Murphy-ZJ/food-in-fridge"><i class="fab fa-github"></i></a></li>
+						
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	 <!-- // footer  -->
 
 	<script src="assets/js/jquery-3.2.1.min.js"></script>
 	<script src="assets/js/sticky-sidebar.js"></script>
@@ -377,6 +200,7 @@
 	<script src="assets/js/custom.js"></script>
 	<script src="assets/js/popper.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </body>
 
 </html>

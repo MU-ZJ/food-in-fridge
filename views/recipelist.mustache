@@ -42,7 +42,7 @@
 
 					<div class="row">
 						<div class="col-lg-2 col-md-12">
-							<a id="logo" href="/" class="d-inline-block margin-tb-5px"><img src="/assets/img/logo-small.png" alt="" width= 52 height= 52></a>
+							<a id="logo" href="/" class="d-inline-block margin-tb-5px"><img src="assets/img/logo-small.png" alt="" width= 52 height= 52></a>
 							<a class="mobile-toggle padding-13px background-main-color" href="#"><i class="fas fa-bars"></i></a>
 						</div>
 						<div class="col-lg-8 col-md-12 position-inherit">
@@ -51,12 +51,7 @@
 							</ul>
 								</li>
 								<li><a href="/">Home</a></li>
-								<li class="has-dropdown"><a href="#">Recipes</a>
-									<ul class="sub-menu text-left">
-										<li><a href="#">Recipes - Grid Layout </a></li>
-							
-									</ul>
-								</li>
+								<li><a href="/choice/">My Lists</a>	</li>
 								<li><a href="/login">Login</a></li>
 									<li><a href="/register">Register</a></li>
 									</ul>
@@ -79,11 +74,11 @@
 
 	<div id="page-title" class="padding-tb-30px gradient-white">
 		<div class="container text-left">
-			<ol class="breadcrumb opacity-5">
+		<!--	<ol class="breadcrumb opacity-5">
 				<li><a href="#">Home</a></li>
 				<li class="active">recipes</li>
-			</ol>
-			<h1 class="font-weight-300">Recipes - List Layout</h1>
+			</ol>-->
+			<h1 class="font-weight-300">Munchie Options</h1>
 		</div>
 	</div>
 
@@ -110,20 +105,14 @@
 					</div>
 					<div class="padding-25px">
 						<div class="rating">
-							<ul>
-								<li class="active"></li>
-								<li class="active"></li>
-								<li class="active"></li>
-								<li class="active"></li>
-								<li></li>
-							</ul>
+							<i class="fas fa-users"></i> {{recipe.mealType}}
 						</div>
 						<h3><a href="/recipe/{{recipe.uri}}" class="d-block text-dark text-capitalize text-medium margin-tb-15px">{{recipe.label}}</a></h3>
 						<hr>
 						<div class="row no-gutters"><form method="POST" action='/recipe' ">
 						<input type="hidden" value="{{recipe.uri}}" name="recipe">
-							<div class="col-4 text-left"><button class="text-red"><i class="far fa-heart"></i> Save</button></div>
-							<div class="col-8 text-right"><a href="#" class="text-grey-2"><i class="fas fa-users"></i>{{recipe.mealType}}</a></div>
+							<div class=""><button class="text-red">Take Me To The Recipe</button></div>
+							<div class="col-8 text-right"></div>
 						</form></div>
 					</div>
 					<div class="clearfix"></div>
@@ -139,9 +128,7 @@
 
 		</div>
 
-		<div class="text-center">
-			<a href="#" class="btn box-shadow margin-top-50px padding-tb-10px btn-sm border-2 border-radius-30 btn-inline-block width-210px background-second-color text-white">Show All Recipes</a>
-		</div>
+	
 
 	</div>
 
