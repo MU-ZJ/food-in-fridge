@@ -32,7 +32,7 @@ Register with a username and password then login. Once loggd in head over to the
 
 
 
-* **Database:** 
+## Database:
 This project is built using PostgreSql with pg-promise for Relational Mapping.
 ## Featured programs: 
 HTML, CSS, Bootstrap, JavaScript, Node.js, Mustache
