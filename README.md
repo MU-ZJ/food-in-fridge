@@ -6,7 +6,7 @@ https://apricot-custard-84020.herokuapp.com
 
 ![](https://github.com/Murphy-ZJ/food-in-fridge/blob/1ef56d60e6c8a4692d9a474187c963b80f6380bd/assets/img/index.png)
 <br /> <br /><br />
-## Purpose of the app: <br/><br/>
+## Purpose of the app: 
  This app was created to generate recipes and shopping lists based bon ingredients the user may already have at home.
  
 ## How to use: 
