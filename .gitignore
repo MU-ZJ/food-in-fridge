@@ -1,16 +1,25 @@
+###########
+# General #
+###########
+
 **/[Tt]est*
 **/[Nn]otes*
 **__pycache__*
-**/node_modules
-**package-lock.json
-*.swp
 
+########
+# Node #
+########
 
-# Vim bullshit
+**/node_modules*
+*package-lock.json
+
+##################
+# Vim temp files #
+##################
 
 # Swap
 [._]*.s[a-v][a-z]
-!*.svg  # comment out if you don't need vector files
+!*.svg
 [._]*.sw[a-p]
 [._]s[a-rt-v][a-z]
 [._]ss[a-gi-z]
@@ -22,8 +31,3 @@ Sessionx.vim
 
 # Temporary
 .netrwhist
-*~
-# Auto-generated tag files
-tags
-# Persistent undo
-[._]*.un~
