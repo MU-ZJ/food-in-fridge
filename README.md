@@ -39,7 +39,7 @@ HTML, CSS, Bootstrap, JavaScript, Node.js, Mustache
 ## External API:
 https://developer.edamam.com/
 ## Authors:
-[Wesley Kolar](https://github.com/wesleyjkolar), [Fred Lopez](https://github.com/AgentLopez), [Zachary Murphy](https://github.com/Murphy-ZJ), [Michael Warren](https://github.com/mikewarren02)
+[Wesley Kolar](https://github.com/wesleyjkolar), [Fred Lopez](https://github.com/AgentLopez), [Zachary Murphy](https://github.com/MU-ZJ), [Michael Warren](https://github.com/mikewarren02)
 
 
 
